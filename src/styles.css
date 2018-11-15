@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.form {
+  min-width: 100px;
+  max-width: 300px;
+  width: 100%;
+  font-size: .85em;
+  margin-left: 10px;
+}
+
+.half-width {
+  /* max-width: 130px; */
+  width: 45%;
+  margin-left:4px;
+}
+
+.full-width {
+  /* max-width: 250px; */
+  width: 90%;
+  margin-left:4px;
+}
+ .mat-small {
+   width: .85em !important;
+   height: 10dp !important;
+   font-size: .85em !important;
+ }

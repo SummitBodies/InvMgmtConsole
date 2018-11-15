@@ -1,0 +1,46 @@
+<!-- <div  style="display: flex; flex-direction: column; align-items: center">
+  <img style = "margin-top: 5px; margin-bottom: 10px;" src = '../assets/LOGOSmallIcon.jpg'>
+  </div> -->
+  <form [formGroup] = logInForm (ngSubmit)="logIn(logInForm.value)"
+  class="form">
+  <mat-form-field class="half-width">
+    <input #userName matInput formControlName="userId" placeholder="User Name" autofocus tabindex="1" required />
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="half-width" *ngIf="physLocIds.length">
+    <mat-select #physCountId placeholder="Physical Count Id" floatPlaceholder="auto"
+      formControlName="physCountId" tabindex = "2">
+      <mat-option *ngFor="let option of physLocIds" [value]="option" required>{{option}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="half-width" *ngIf="physLocIds.length">
+    <mat-select placeholder="Warehouse Id" floatPlaceholder="auto" formControlName="warehouseId"
+      tabindex="5">
+      <mat-option *ngFor="let option of dataAccess.warehouseIds"
+       [value]="option" required (blur)="canRecount()">{{option}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+    <mat-form-field class="half-width">
+      <input #location matInput formControlName="locationId" placeholder="Location Id"
+        tabindex = "3" required (blur)="validateLocation()"/>
+      <mat-error>{{locationErrorMessage}}</mat-error>
+    </mat-form-field>
+
+<div style="display: flex; flex-direction: row; align-items: center">
+  <div class="half-width">
+    <mat-checkbox formControlName="recount" readonly *ngIf="_recount" readonly>Recount</mat-checkbox>
+  </div>
+
+  <div class="half-width" style="padding-left:5px">
+    <button #login mat-raised-button type="submit" [disabled]="!logInForm.valid"
+    color="primary" tabindex="4" class="mat-small" style = "min-width:100px">
+      <mat-icon>play_arrow</mat-icon> Log In</button>
+  </div>
+</div>
+</form>
+
+

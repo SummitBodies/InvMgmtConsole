@@ -1,0 +1,36 @@
+<div></div>   <!-- used to allow margins to stack -->
+
+<button mat-raised-button color= "primary" (click) = "EnterCount()"
+style = "margin-bottom: 5px; margin-top:5px; margin-left: 20px;
+height: 10dp !important;
+font-size: .85em !important;" >Enter Count on Selected Part</button>
+
+<button *ngIf = "this.dataAccess.tags.length"
+mat-raised-button color= "primary" (click) = "enterZeroInAllRemaining()"
+style = "margin-bottom: 5px; margin-top:5px; margin-left: 250px;
+height: 10dp !important;
+font-size: .85em !important;" >Enter Count of Zero for All Remaining Items</button>
+
+<form [formGroup]=partCountForm class="form">
+  <mat-form-field class="half-width">
+    <input matInput formControlName="partNumber" placeholder="Part Number" readonly style="pointer-events:none; width: 140px"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="half-width">
+    <input #countQty matInput formControlName="countQty" placeholder="Count" (keyup)="exit($event)" (blur)="countBlur()" style="width: 140px"
+    />
+  </mat-form-field>
+</form>
+
+<ag-grid-angular #agGrid class="ag-theme-balham" [style.height]="'400px'"
+[style.width]="'800px'" [gridOptions]="gridOptions"
+  rowHeight="22" rowSelection="single"
+  [enableSorting]="true"
+  [enableFilter]="true"
+  [rowData]="rowData | async"
+  [columnDefs]="columnDefs"
+  (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
+
+

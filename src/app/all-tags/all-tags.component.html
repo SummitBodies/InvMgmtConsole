@@ -1,0 +1,33 @@
+
+<button mat-raised-button color="primary" (click)="refreshData()" style="margin-left: 30px; margin-right: 30px">Refresh</button>
+<label>Total Variance:   </label>
+  <input matInput placeholder="Curent Total Estimated Variance"
+      readonly style="pointer-events:none; text-align:right; width: 75px"
+      value="{{totalVariance | currency:'USD':'symbol-narrow':'.2-2'}}" />
+
+<div style="position: fixed; top: 50px; width: 300px; margin-left: 25px">
+  <output>Percentage of Tags Counted ({{percentTagsCounted}}%)</output>
+  <mat-progress-bar mode="determinate" value={{percentTagsCounted}}></mat-progress-bar>
+  <output>Total Counted {{itemsCounted}}  --  Total Tags {{totalTagsToCount}}</output>
+
+  <div style="margin-bottom:10px"></div>
+
+  <output>Locations With Count Completed ({{percentLocationsCompleted}}%)</output>
+  <mat-progress-bar mode="determinate" value={{percentLocationsCompleted}}></mat-progress-bar>
+  <output>Total Locations {{numLocations}}  --  Completed Locations {{locationsCompleted }}</output>
+
+  <div style="display: flex; flex-direction: column; margin-top:18px"></div>
+
+<ag-grid-angular
+    style="width: 1600px; height: 500px;"
+    class="ag-theme-balham"
+    [enableSorting]="true"
+    [enableColResize] = "true"
+    [floatingFilter]="true"
+    [enableFilter]="true"
+    [rowData]="rowData | async"
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)"
+    >
+</ag-grid-angular>
+

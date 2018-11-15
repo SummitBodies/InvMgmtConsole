@@ -1,0 +1,26 @@
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="login()">
+    <mat-icon>play_arrow</mat-icon> Log In
+  </button>
+  <button mat-menu-item (click)="recount()" *ngIf="dataAccess.location && dataAccess.location.location">
+    <mat-icon>add_box</mat-icon> Recount
+  </button>
+
+  <button mat-menu-item (click)="agUncounted()" *ngIf="dataAccess.location && dataAccess.location.location">
+    <mat-icon>money_off</mat-icon> Uncounted
+  </button>
+  <!-- *ngIf="dataAccess.adminView" -->
+  <button mat-menu-item (click)="agLocationProgress()" >
+    <mat-icon>schedule</mat-icon> Progress by Location
+  </button>
+  <!-- *ngIf="dataAccess.adminView" -->
+  <button mat-menu-item (click)="agTags()" >
+    <mat-icon>all_inclusive</mat-icon> Individual Tag Report
+  </button>
+</mat-menu>
+
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+
